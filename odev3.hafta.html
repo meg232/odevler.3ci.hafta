@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        /* Burdaki kodlardan barların rengi değiştirilebiliyor
+meter::-webkit-meter-optimum-value {
+  background: green;
+}
+
+meter::-webkit-meter-suboptimum-value {
+  background: yellow;
+}
+
+meter::-webkit-meter-even-less-good-value {
+  background: orange;
+}
+*/
+    </style>
+
+    <p><strong>Aldıkları puanlar:</strong></p>
+    <p><label for="bulent">Bülent:</label>
+    <meter id="bulent" min="0" low="40" high="90" max="100" value="55"></meter><span id="not1">90</span><button onclick="aztikla('bulent','not1');">-</button><button onclick="coktikla('bulent','not1');">+</button></p>
+    <p>Renk seçin: <input type="color" name="renk1" id="renk1" onchange="renkDegistir('renk1', 'bulent', '--webkit-meter-optimum-value')"></p>
+    <p><label for="umit">Ümit:</label>
+    <meter id="umit" min="0" low="40" high="90" max="100" value="100"></meter><span id="not2">90</span><button onclick="aztikla('umit','not2');">-</button><button onclick="coktikla('umit','not2');">+</button></p>
+    <p>Renk seçin: <input type="color" name="renk2" id="renk2" onchange="renkDegistir('renk2', 'umit', '-webkit-meter-suboptimum-value')"></p>
+    <p><label for="fatih">Fatih:</label>
+    <meter id="fatih" min="0" low="40" high="90" max="100" value="70"></meter><span id="not3">90</span><button onclick="aztikla('fatih','not3');">-</button><button onclick="coktikla('fatih','not3');">+</button></p>
+    <p>Renk seçin: <input type="color" name="renk3" id="renk3" onchange="renkDegistir('renk3', 'fatih', '-webkit-meter-even-less-good-value')"></p>
+    <p><label for="selcuk">Selçuk:</label>
+    <meter id="selcuk" min="0" low="40" high="90" max="100" value="90"></meter><span id="not4">90</span><button onclick="aztikla('selcuk','not4');">-</button><button onclick="coktikla('selcuk','not4');">+</button></p>
+    <p>Renk seçin: <input type="color" name="renk4" id="renk4" onchange="renkDegistir('renk4', 'selcuk', '-webkit-meter-even-less-good-value')"></p>
+
+    <script>
+        /PROBLEM İSE JAVACSRİPT ÜZERİNDEN BUNU YAPAMAMAK/
+        var omg = document.getElementById("renk4").value = '#FF5733';
+        document.styleSheets[0].insertRule('meter::-webkit-meter-optimum-value { background: pink; }', 0);
+        document.styleSheets[1].insertRule('meter::-webkit-meter-optimum-value { background: pink; }', 1);
+        document.styleSheets[2].insertRule('meter::-webkit-meter-optimum-value { background: pink; }', 2);
+        function aztikla(incomId,incomNot){
+            /*document.getElementById(incomNot).style.color='#aa1212'*/
+            document.getElementById(incomId).value=document.getElementById(incomId).value-1;
+            document.getElementById(incomNot).innerText=document.getElementById(incomId).value;
+        }
+
+        function coktikla(incomId,incomNot){
+            /*document.getElementById(incomNot).style.color='#a2a2a9'*/
+            document.getElementById(incomId).value=document.getElementById(incomId).value+1;
+            document.getElementById(incomNot).innerText=document.getElementById(incomId).value;
+        }
+        /DENEME/
+        function renkDegistir(inputId, meterId, styleProperty) {
+            
+            var renk = document.getElementById(inputId).value;
+            document.styleSheets[0].insertRule('meter::-webkit-meter-optimum-value { background: ${renk}; }', 0);
+        }
+    </script>
+</body>
+</html>
